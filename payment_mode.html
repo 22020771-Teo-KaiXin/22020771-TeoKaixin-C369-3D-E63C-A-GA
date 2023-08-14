@@ -7,7 +7,7 @@
   </head>
   <head> 
     <title> KX's Services </title>
-    
+    <script src="https://www.paypal.com/sdk/js?client-id=AYJbOuuK9sCqiuD30RHXX-4asP9PiW-fTFyK5HuqeLHO0Fh8X0WPLXR8vEfRUoxuB-Ug_5bytl71d0B6"></script>
     <style>
     body {
       margin: 0;
@@ -83,11 +83,75 @@
     .orange {
       color: rgb(221, 89, 7); 
     }
+
+    .big-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 450px;
+      background-color: #e9e6e6;
+      padding: 20px;
+      font: 18px sans-serif; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; /* Stack elements vertically */
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #0675c0;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }    
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #D9D9D9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Ensure the overlay is on top */
+    }
+    
+    .next-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .text {
+      position: absolute;
+      top: 150px;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
     </style>
 
     <body>
       <nav>
-        <a href="Homepage.html" class="black">Home</a>
+        <a href="index.html" class="black">Home</a>
         <a href="why_choose_us.html" class="purple">Why Choose Us</a>
         <a href="our_services.html" class="blue">Our Services</a>
         <a href="contact_us.html" class="green">Contact Us</a>
@@ -98,43 +162,56 @@
         KX
       </div>
       
-      <script src="https://www.paypal.com/sdk/js?client-id=AYJbOuuK9sCqiuD30RHXX-4asP9PiW-fTFyK5HuqeLHO0Fh8X0WPLXR8vEfRUoxuB-Ug_5bytl71d0B6&disable-funding=card"></script>
+      <div class="big-container">
+        <div class="overlay">
+          <div class="button-container">
+            <div class="text">
+              <p>Service selected type: Account Issuance Service</p>
+              <p>Subscription: $45 / year</p>
+              <!-- PayPal login button with a pop-up window -->
+              <button class="button" onclick="openPayPalPopup()">Pay with PayPal/Credit card</button>
+              </div>
+          </div>
+        </div>
+      </div>
 
-      <!-- Payment options -->
-    <input type="radio" id="Creditcard" name="payment" onclick="checkCard()"> Credit Card
-    <input type="radio" id="paymentPayPal" name="payment" onclick="checkCard()"> PayPal
-
-    <!-- Credit card form -->
-    <div id="card" style="visibility: hidden;">
-        <!-- Your credit card form goes here -->
-        <!-- Replace this with your actual credit card form elements -->
-    </div>
-
-    <!-- PayPal button container -->
-    <div id="paypal-button-container">
-        <!-- The PayPal button will be rendered here -->
-    </div>
-
-    <script>
-    function checkCard() {
-        if (document.getElementById('Creditcard').checked) {
-            document.getElementById('card').style.visibility = 'visible';
-            document.getElementById('paypal-button-container').innerHTML = '';
-        } else if (document.getElementById('paymentPayPal').checked) {
-            document.getElementById('card').style.visibility = 'hidden';
-
-            // Initialize PayPal button using PayPal SDK
-            paypal.Buttons({
-                style: {
-                    layout: 'horizontal',
-                    color: 'black',
-                    shape: 'rect',
-                    label: 'pay',
-                }
-            }).render('#paypal-button-container');
+      <script>
+        function openPayPalPopup() {
+            window.open('https://www.paypal.com/signin', 'PayPal Login', 'width=600,height=400');
         }
-    }
-    </script>
-    
+        function processPayment() {
+          console.log('Payment simulation completed');
+
+          // After successful payment, redirect to transaction_done.html
+          window.location.href = 'transaction_done.html';
+        }
+
+          // Initialize PayPal SDK
+          paypal.Buttons({
+              style: {
+                  color: 'blue',
+                  shape: 'pill',
+                  label: 'pay',
+              },
+              createOrder: function(data, actions) {
+                  // Replace with actual order creation logic
+                  return actions.order.create({
+                      purchase_units: [{
+                          amount: {
+                              value: '10.00' // Replace with the desired amount
+                          }
+                      }]
+                  });
+              },
+              onApprove: function(data, actions) {
+                  // Simulate payment approval and completion
+                  simulatePayment();
+              }
+          }).render('#paypal-button');
+      </script>
+
+      <div class="next-button">
+        <a href="transaction_done.html" class="btn btn-primary" role="button" style="color: white; text-decoration: none;">Done</a>
+      </div>
     </body>
 </html>
