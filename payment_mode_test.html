@@ -83,6 +83,13 @@
     .orange {
       color: rgb(221, 89, 7); 
     }
+
+    .checkCard {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+    }
     </style>
 
     <body>
@@ -97,44 +104,28 @@
       <div class="logo">
         KX
       </div>
-      
-      <script src="https://www.paypal.com/sdk/js?client-id=AYJbOuuK9sCqiuD30RHXX-4asP9PiW-fTFyK5HuqeLHO0Fh8X0WPLXR8vEfRUoxuB-Ug_5bytl71d0B6&disable-funding=card"></script>
 
-      <!-- Payment options -->
-    <input type="radio" id="Creditcard" name="payment" onclick="checkCard()"> Credit Card
-    <input type="radio" id="paymentPayPal" name="payment" onclick="checkCard()"> PayPal
-
-    <!-- Credit card form -->
-    <div id="card" style="visibility: hidden;">
-        <!-- Your credit card form goes here -->
-        <!-- Replace this with your actual credit card form elements -->
-    </div>
-
-    <!-- PayPal button container -->
-    <div id="paypal-button-container">
-        <!-- The PayPal button will be rendered here -->
-    </div>
-
-    <script>
-    function checkCard() {
-        if (document.getElementById('Creditcard').checked) {
-            document.getElementById('card').style.visibility = 'visible';
-            document.getElementById('paypal-button-container').innerHTML = '';
-        } else if (document.getElementById('paymentPayPal').checked) {
-            document.getElementById('card').style.visibility = 'hidden';
-
-            // Initialize PayPal button using PayPal SDK
-            paypal.Buttons({
-                style: {
-                    layout: 'horizontal',
-                    color: 'black',
-                    shape: 'rect',
-                    label: 'pay',
-                }
-            }).render('#paypal-button-container');
-        }
+      <script src="https://www.paypal.com/sdk/js?client-id=AYJbOuuK9sCqiuD30RHXX-4asP9PiW-fTFyK5HuqeLHO0Fh8X0WPLXR8vEfRUoxuB-Ug_5bytl71d0B6&disable-funding=card"></script>   
+        
+      function checkCard() { 
+        if (document.getElementById('Creditcard').checked) { 
+            document.getElementById('card').style.visibility = 'visible'; 
+            document.getElementById('paypal-button-container').innerHTML = ''; 
+        } 
+        else if (document.getElementById('paymentPayPal').checked) { 
+            document.getElementById('card').style.visibility = 'hidden'; 
+            document.getElementById('paypal-button-container').innerHTML = ''; 
+            paypal.Buttons({ 
+                style: { 
+                    layoutc: 'horizontal', 
+                    color: 'black', 
+                    shape: 'rect', 
+                    label: 'pay', 
+                } 
+            }).render('#paypal-button-container'); 
+        }  
     }
-    </script>
     
     </body>
+
 </html>
