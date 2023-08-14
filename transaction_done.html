@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> KX's Services </title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Ensure the body takes up the full viewport height */
+      font-family: sans-serif; 
+    }
+
+    .logo {
+      position: absolute;
+      margin-top: 10px;
+      left: 40px;
+      width: 115px;
+      height: 80px;
+      background-color: rgb(243, 202, 231);
+      color: blue;
+      text-align: center;
+      font-size: 60px;
+      font-family: sans-serif;
+      box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.5);
+      text-shadow: 0px 4px 4px #00000040;
+    }    
+    
+    nav {
+      background-color: transparent;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      margin-left: 100px;
+      font-size: 20px;
+      font-family: sans-serif;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0px 4px 4px #00000040;
+      margin: 0 50px;
+    }
+
+    .black {
+      color: black;
+    }
+
+    .purple {
+      color: rgb(102, 30, 132);
+    }
+
+    .blue {
+      color: rgb(23, 23, 148);
+    }
+
+    .green {
+      color: rgb(13, 88, 13);
+    }
+
+    .orange {
+      color: rgb(221, 89, 7);
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: pink; /* Set your desired background color for the container */
+      width: 800px; /* Adjust the width as per your needs */
+      height: 200px; /* Adjust the height as per your needs */
+      border-radius: 10px; /* Optional: To add rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: To add a box shadow */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+    }
+
+    .tick {
+      font-size: 45px;
+      color: green;
+      margin-right: 10px;
+    }
+
+    .success-text {
+      font-size: 30px;
+      color: black;
+    }
+    </style>
+</head>
+
+<body>
+    <nav>
+      <a href="Homepage.html" class="black">Home</a>
+      <a href="why_choose_us.html" class="purple">Why Choose Us</a>
+      <a href="our_services.html" class="blue">Our Services</a>
+      <a href="contact_us.html" class="green">Contact Us</a>
+      <a href="Book_Online_Login.html" class="orange">Book Online</a>
+    </nav>
+
+    <div class="logo">
+      KX
+    </div>
+
+    <div class="container">
+        <span class="tick">&#10004;</span> <!-- Unicode character for green tick -->
+        <span class="success-text">Transaction successfully completed!</span>
+    </div>

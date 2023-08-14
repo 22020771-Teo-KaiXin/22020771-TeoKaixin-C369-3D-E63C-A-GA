@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> KX's Services </title>
+
+    <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Ensure the body takes up the full viewport height */
+      font-family: sans-serif; 
+    }
+
+    .logo {
+      position: absolute;
+      margin-top: 10px;
+      left: 40px;
+      width: 115px;
+      height: 80px;
+      background-color: rgb(243, 202, 231);
+      color: blue;
+      text-align: center;
+      font-size: 60px;
+      font-family: sans-serif;
+      box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.5);
+      text-shadow: 0px 4px 4px #00000040;
+    }    
+    
+    nav {
+      background-color: transparent;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      margin-left: 100px;
+      font-size: 20px;
+      font-family: sans-serif;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0px 4px 4px #00000040;
+      margin: 0 50px;
+    }
+
+    .black {
+      color: black;
+    }
+
+    .purple {
+      color: rgb(102, 30, 132);
+    }
+
+    .blue {
+      color: rgb(23, 23, 148);
+    }
+
+    .green {
+      color: rgb(13, 88, 13);
+    }
+
+    .orange {
+      color: rgb(221, 89, 7);
+    }
+
+    .container {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgb(198, 198, 250); /* Set your desired background color for the container */
+      width: 800px; /* Adjust the width as per your needs */
+      height: 400px; /* Adjust the height as per your needs */
+      border-radius: 10px; /* Optional: To add rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: To add a box shadow */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      text-align: center;
+    }
+
+    .container p {
+      position: relative;
+      top: -80px; /* Use negative value to move the paragraphs up */
+    }
+
+    .inner-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 150px; 
+        left: 10px; /* Use positive value to move the text to the right */
+    }
+
+    .inner-container p {
+        margin: 20px 0;
+        font-size: 20px;
+    }
+
+    .box input[type="text"] {
+        /* Styles for the text input inside the container */
+      width: 300px; /* Adjust the width as per your needs */
+      height: 200px; /* Adjust the height as per your needs */
+      padding: 10px; /* Adjust the padding as per your needs */
+      font-size: 30px; /* Adjust the font size as per your needs */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .input-container {
+      /* Styles for the input container */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 80px; /* Adjust this value to move the input lower */
+    }
+
+    .custom-input {
+      /* Styles for the text input inside the container */
+      padding: 10px; /* Adjust the padding as per your needs */
+      font-size: 18px; /* Adjust the font size as per your needs */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px; /* Add space between input box and submit button */
+    }
+
+    .submit-button {
+    /* Styles for the submit button */
+      width: 100px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+    <nav>
+      <a href="index.html" class="black">Home</a>
+      <a href="why_choose_us.html" class="purple">Why Choose Us</a>
+      <a href="our_services.html" class="blue">Our Services</a>
+      <a href="contact_us.html" class="green">Contact Us</a>
+      <a href="Book_Online_Login.html" class="orange">Book Online</a>
+    </nav>
+
+    <div class="logo">
+      KX
+    </div>
+
+    <div class="container">
+        <form onsubmit="return validateForm()">
+            <div class="input-container">
+                <input type="text" placeholder="e.g. 437651" name="custom_input" style="width: 200px; height: 30px; font-size: 25px;">
+                <input type="submit" class="login" value="Submit">
+            </div>
+         </form>
+    </div>
+
+    <div class="inner-container p">
+        <p>We have sent you a One-Time Password code via SMS for mobile number verification</p>
+        <p>Enter code here:</p>
+    </div>
+
+
+    <script>
+        function validateForm() {
+            var OTPInput = document.getElementsByName('custom_input')[0].value;
+            // Remove leading and trailing spaces
+
+            if (OTPInput.trim() === '') {
+                alert("Please enter the One-Time Password.");
+                return; // Prevent form submission
+            }
+
+            // Check if OTPValue contains only digits and is exactly 6 digits long
+            if (!isValidOTP(OTPInput)) {
+                alert("OTP can only contain numbers and must be exactly 6 digits.");
+                return; // Prevent form submission
+            }
+
+            // Show success message
+            alert("OTP submitted successfully!");
+
+            // Redirect to payment_mode.html after successful validation and showing the success alert
+            window.location.href = "payment_mode.html";
+            return false; // Prevent form submission for this example (you can remove this line if you want the form to be submitted)
+        }
+
+        function isValidOTP(input) {
+            // Check if OTPValue contains only digits
+            // for (var i = 0; i < OTP.length; i++) {
+            //     var charCode = OTPValue.charCodeAt(i);
+            //     if (charCode < 48 || charCode > 57) {
+            //         return false;
+            //     }
+            // }
+            var checkOTP = input.trim();
+
+            return /^\d{6}$/.test(checkOTP);
+
+            // Check if OTPValue is exactly 6 digits
+            // return OTPValue.length == 6;
+        }
+    </script>
+    
+</body>
+</html>
