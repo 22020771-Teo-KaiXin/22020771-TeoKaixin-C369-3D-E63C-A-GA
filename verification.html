@@ -173,10 +173,11 @@
 
     <script>
         function validateForm() {
+            event.preventDefault(); // Prevent the default form submission behavior
             var OTPInput = document.getElementsByName('custom_input')[0].value;
             // Remove leading and trailing spaces
 
-            if (OTPInput.trim() === '') {
+            if (OTPInput.trim() == '') {
                 alert("Please enter the One-Time Password.");
                 return; // Prevent form submission
             }
@@ -189,11 +190,13 @@
 
             // Show success message
             alert("OTP submitted successfully!");
+            window.location.href = "transaction_done.html";
+        
+            return false; // Prevent form submission
         }
 
         function isValidOTP(input) {
             var checkOTP = input.trim();
-
             return /^\d{6}$/.test(checkOTP);
 
             // Check if OTPValue is exactly 6 digits
@@ -202,6 +205,5 @@
         
     </script>
 
-    <a href="transaction_done.html">
 </body>
 </html>
