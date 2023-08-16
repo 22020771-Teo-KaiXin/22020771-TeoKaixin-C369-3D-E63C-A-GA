@@ -43,23 +43,23 @@
     .image-container img {
       max-width: 100%;
       transform: translateX(150px); /* Move the image using pixels to the right */
-      margin-top: -100px; /* Adjust the negative margin to move the image up */
+      margin-top: -100px; 
     }
 
     nav {
       background-color: transparent; /* Remove background color */
       padding: 10px;
       display: flex;
-      justify-content: center; /* Center all child elements (links) */
+      justify-content: center; 
       align-items: center;
-      margin-top: 10px; /* Add margin to push the navigation bar down */
-      margin-left: 100px; /* Add margin to move the navigation bar to the right */
+      margin-top: 10px; 
+      margin-left: 100px; 
       font-size: 20px;
     }
 
     nav a {
       text-decoration: none; /* Remove underline from links */
-      font-weight: bold; /* Make the words bold */
+      font-weight: bold; 
       text-shadow: 0px 4px 4px #00000040;
       margin: 0 50px; /* Add horizontal margin between the links */
     }
@@ -168,7 +168,6 @@
             <div class="text">
               <p>Service selected type: Account Issuance Service</p>
               <p>Subscription: $45 / year</p>
-              <!-- PayPal login button with a pop-up window -->
               <button class="button" onclick="openPayPalPopup()">Pay with PayPal/Credit card</button>
               </div>
           </div>
@@ -182,11 +181,9 @@
         function processPayment() {
           console.log('Payment simulation completed');
 
-          // After successful payment, redirect to transaction_done.html
           window.location.href = 'transaction_done.html';
         }
 
-          // Initialize PayPal SDK
           paypal.Buttons({
               style: {
                   color: 'blue',
@@ -194,24 +191,22 @@
                   label: 'pay',
               },
               createOrder: function(data, actions) {
-                  // Replace with actual order creation logic
                   return actions.order.create({
                       purchase_units: [{
                           amount: {
-                              value: '10.00' // Replace with the desired amount
+                              value: '10.00' 
                           }
                       }]
                   });
               },
               onApprove: function(data, actions) {
-                  // Simulate payment approval and completion
                   simulatePayment();
               }
           }).render('#paypal-button');
       </script>
 
       <div class="next-button">
-        <a href="transaction_done.html" class="btn btn-primary" role="button" style="color: white; text-decoration: none;">Done</a>
+        <a href="verification.html" class="btn btn-primary" role="button" style="color: white; text-decoration: none;">Done</a>
       </div>
     </body>
 </html>

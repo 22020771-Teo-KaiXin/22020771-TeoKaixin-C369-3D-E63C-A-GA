@@ -106,17 +106,15 @@
     }
 
     .box input[type="text"] {
-        /* Styles for the text input inside the container */
-      width: 300px; /* Adjust the width as per your needs */
-      height: 200px; /* Adjust the height as per your needs */
-      padding: 10px; /* Adjust the padding as per your needs */
-      font-size: 30px; /* Adjust the font size as per your needs */
+      width: 300px; 
+      height: 200px; 
+      padding: 10px; 
+      font-size: 30px; 
       border: 1px solid #ccc;
       border-radius: 5px;
     }
 
     .input-container {
-      /* Styles for the input container */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -125,16 +123,15 @@
     }
 
     .custom-input {
-      /* Styles for the text input inside the container */
+
       padding: 10px; /* Adjust the padding as per your needs */
-      font-size: 18px; /* Adjust the font size as per your needs */
+      font-size: 18px; 
       border: 1px solid #ccc;
       border-radius: 5px;
-      margin-bottom: 20px; /* Add space between input box and submit button */
+      margin-bottom: 20px; 
     }
 
     .submit-button {
-    /* Styles for the submit button */
       width: 100px;
       padding: 10px;
       background-color: #f0f0f0;
@@ -160,7 +157,7 @@
     </div>
 
     <div class="container">
-        <form onsubmit="return validateForm()">
+      <form action="transaction_done.html" method="GET" onsubmit="return validateForm()">
             <div class="input-container">
                 <input type="text" placeholder="e.g. 437651" name="custom_input" style="width: 200px; height: 30px; font-size: 25px;">
                 <input type="submit" class="login" value="Submit">
@@ -192,20 +189,9 @@
 
             // Show success message
             alert("OTP submitted successfully!");
-
-            // Redirect to payment_mode.html after successful validation and showing the success alert
-            window.location.href = "transaction_done.html";
-            return false; // Prevent form submission for this example (you can remove this line if you want the form to be submitted)
         }
 
         function isValidOTP(input) {
-            // Check if OTPValue contains only digits
-            // for (var i = 0; i < OTP.length; i++) {
-            //     var charCode = OTPValue.charCodeAt(i);
-            //     if (charCode < 48 || charCode > 57) {
-            //         return false;
-            //     }
-            // }
             var checkOTP = input.trim();
 
             return /^\d{6}$/.test(checkOTP);
@@ -214,8 +200,8 @@
             // return OTPValue.length == 6;
         }
         
-        
     </script>
-    
+
+    <a href="transaction_done.html">
 </body>
 </html>
